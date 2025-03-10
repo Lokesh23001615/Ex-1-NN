@@ -37,11 +37,52 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+```
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+import seaborn as sns
 
+df = pd.DataFrame(sns.load_dataset("planets"))
+df
 
+df.isnull()
+
+df.fillna(df["mass"].mean().round(1),inplace=True)
+
+df.drop("method",axis=1,inplace=True)
+df.head()
+
+scaler = StandardScaler()
+df1 = pd.DataFrame(scaler.fit_transform(df))
+df1.head()
+
+X = df1.iloc[:,:-1]
+y = df1.iloc[:,-1]
+print(X)
+print(y)
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2)
+print(X_train)
+print(len(X_test))
+print(y_train)
+print(len(y_test))
+```
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+![image](https://github.com/user-attachments/assets/ed6840b1-6700-4a78-b214-89800906fe1b)
+
+![image](https://github.com/user-attachments/assets/e0495b09-d61d-48a7-8915-92a17e42e6ae)
+
+![image](https://github.com/user-attachments/assets/a4150407-d65f-47af-b21b-21a102adfe30)
+
+![image](https://github.com/user-attachments/assets/ed8e8416-5d2e-440b-aa8e-1482fa7bf824)
+
+![image](https://github.com/user-attachments/assets/0a440025-75f5-4d17-b59a-d6c4035b7a87)
+
+![image](https://github.com/user-attachments/assets/eb121745-0998-43e0-9769-532da4cf573a)
+
+![image](https://github.com/user-attachments/assets/c4b1c56d-57e2-4bfc-939c-72ab7a78495f)
+
 
 
 ## RESULT:
